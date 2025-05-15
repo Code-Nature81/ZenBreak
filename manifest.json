@@ -1,48 +1,49 @@
 {
   "name": "ZenBreak",
   "short_name": "ZenBreak",
-  "start_url": "index.html",
+  "start_url": "/ZenBreak/index.html",
   "display": "standalone",
   "background_color": "#e0f7fa",
-  "theme_color": "#0288d1",
+  "theme_color": "#0277bd",
+  "orientation": "portrait",
   "icons": [
     {
-      "src": "logo.png",
+      "src": "/ZenBreak/logo.png",
       "sizes": "72x72",
       "type": "image/png"
     },
     {
-      "src": "logo.png",
+      "src": "/ZenBreak/logo.png",
       "sizes": "96x96",
       "type": "image/png"
     },
     {
-      "src": "logo.png",
+      "src": "/ZenBreak/logo.png",
       "sizes": "128x128",
       "type": "image/png"
     },
     {
-      "src": "logo.png",
+      "src": "/ZenBreak/logo.png",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "logo.png",
+      "src": "/ZenBreak/logo.png",
       "sizes": "152x152",
       "type": "image/png"
     },
     {
-      "src": "logo.png",
+      "src": "/ZenBreak/logo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "logo.png",
+      "src": "/ZenBreak/logo.png",
       "sizes": "384x384",
       "type": "image/png"
     },
     {
-      "src": "logo.png",
+      "src": "/ZenBreak/logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }
