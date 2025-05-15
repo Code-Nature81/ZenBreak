@@ -6,7 +6,8 @@
   <title>ZenBreak - Accueil</title>
 
   <!-- Lien vers le manifest PWA -->
-  <link rel="manifest" href="manifest.json" />
+  <link rel="manifest" href="/ZenBreak/manifest.json">
+
 
   <!-- Couleur de la barre d’état (Android) -->
   <meta name="theme-color" content="#0288d1" />
@@ -33,12 +34,14 @@
     
   </div>
 </body>
+
 <script>
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js')
-      .then(() => console.log("Service Worker enregistré"))
-      .catch(err => console.error("Échec SW :", err));
+    navigator.serviceWorker.register('/ZenBreak/service-worker.js')
+      .then(reg => console.log('✅ Service Worker enregistré'))
+      .catch(err => console.error('❌ Erreur Service Worker :', err));
   }
 </script>
+
 
 </html>
