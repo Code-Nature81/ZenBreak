@@ -5,7 +5,7 @@
   "display": "standalone",
   "background_color": "#e0f7fa",
   "theme_color": "#0277bd",
-  "orientation": "portrait",
+  
   "icons": [
     {
       "src": "/ZenBreak/logo.png",
