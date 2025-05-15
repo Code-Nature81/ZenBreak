@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ZenBreak - Accueil</title>
+
+  <!-- Lien vers le manifest PWA -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Couleur de la barre d’état (Android) -->
+  <meta name="theme-color" content="#0288d1" />
+
+  <!-- Icônes pour les différents usages -->
+  <link rel="apple-touch-icon" sizes="180x180" href="logo.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="logo.png" />
+
+  <!-- Ton fichier CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+
+<body>
+  <video id="background-video" autoplay loop muted poster="https://www.shutterstock.com/shutterstock/videos/3617496381/preview/stock-footage-animated-butterfly-isolated-on-black-background.webm">
+  <source src="https://www.shutterstock.com/shutterstock/videos/3617496381/preview/stock-footage-animated-butterfly-isolated-on-black-background.mp4" type="video/mp4">
+</video>
+  <div class="container">
+    <img src="logo.png" alt="Logo ZenBreak" style="width:150px; margin-bottom: 20px;" />
+    <h1>Bienvenue sur ZenBreak</h1>
+    <p style="color: white;">🧘‍♂️ Une pause relaxante à portée de clic</p>
+    <a href="choix-duree.html"><button>Commencer une pause</button></a>
+    
+  </div>
+</body>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(() => console.log("Service Worker enregistré"))
+      .catch(err => console.error("Échec SW :", err));
+  }
+</script>
+
+</html>
