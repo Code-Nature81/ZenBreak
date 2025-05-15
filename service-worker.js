@@ -5,7 +5,11 @@ const urlsToCache = [
   'choix-son.html',
   'style.css',
   'logo.png',
-  'sounds/pluie.mp3',
+  'sounds/RAINConc_Pluie d ete sur terrasse (ID 1019)_LS',
+  'sounds/AMBBird_Oiseaux du soir (ID 1859)_LS.mp33',
+  'sounds/AMBUndr_Grotte 2 (ID 2136)_LS.mp3',
+  'sounds/ANMLInsc_Cigales (ID 3002)_LS.mp3',
+  'sounds/gong.mp3',
   'sounds/notification.mp3'
 ];
 
