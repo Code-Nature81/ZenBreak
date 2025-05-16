@@ -50,31 +50,51 @@ h1{
     #timer {
       font-size: 2rem;
       margin-top: 1rem;
-      color: #01579b;
+      color: #6ebaf4;
     }
-    
+    footer {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 0.9em;
+  color: #777;
+  font-weight: 300;
+  position: absolute;
+   bottom: 0;
+}
   </style>
 </head>
 <body>
 <video id="background-video" autoplay loop muted poster="121805-724719819_tiny.webm">
   <source src="121805-724719819_tiny.mp4" type="video/mp4">
 </video>
-  <h1>Choisissez votre ambiance sonore</h1>
+  <h1>🎧 Choisissez votre ambiance sonore</h1>
 
   <label for="ambientSounds">Sons d’ambiance :</label>
   <select id="ambientSounds">
-    <option value="sounds/RAINConc_Pluie d ete sur terrasse (ID 1019)_LS.mp3" >Oiseaux du soir</option>
+    <option value="" >Aucune ambiance</option>
+    <option value="sounds/RAINConc_Pluie d ete sur terrasse (ID 1019)_LS.mp3" >Pluie d'été</option>
     <option value="sounds/AMBBird_Oiseaux du soir (ID 1859)_LS.mp3" >Oiseaux du soir</option>
     <option value="sounds/AMBUndr_Grotte 2 (ID 2136)_LS.mp3">Grotte</option>
     <option value="sounds/ANMLInsc_Cigales (ID 3002)_LS.mp3">Cigales</option>
+    <option value="sounds/AMBBird_Campagne (ID 0097)_LS.mp3" >Campagne</option>
+    <option value="sounds/AMBForst_Foret (ID 0100)_LS.mp3">Forêt</option>
+    <option value="sounds/AMBForst_Foret et ruisseau 1 (ID 2713)_LS.mp3" >Forêt et ruisseau</option>
+    <option value="sounds/AMBSea_Mer vagues moyennes et mouettes (ID 0267)_LS.mp3">Mer et mouettes</option>
+    <option value="sounds/FEETHmn_Pas dans les feuilles (ID 0137)_LS.mp3">Pas dans les feuilles</option>
+    <option value="sounds/STORM_Pluie et orage 2 (ID 0740)_LS.mp3">Pluie et orage</option>
+    <option value="sounds/THUN_Tonnerre 4 (ID 3115)_LS.mp3">Tonerre</option>
+    <option value="sounds/WATRWave_Mer vagues (ID 0266)_LS.mp3">Mer/vagues</option>
+    <option value="sounds/WINDDsgn_Vent (ID 0595)_LS.mp3">Vent</option>
     
   </select>
-
+<br><br>
   <button id="startBtn">Commencer</button>
   <button id="stopBtn">Arrêt son</button>
 
   <div id="timer"></div>
-
+<footer>
+    <p>&copy; 2025 ZenBreak | Tous droits réservés</p>
+  </footer>
   <script>
     let duration = parseInt(sessionStorage.getItem('dureeChoisie'));
     if (!duration || isNaN(duration)) duration = 300;

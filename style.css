@@ -23,7 +23,7 @@ body {
 .container {
   max-width: 500px;
   padding: 30px;
-  background: rgba(59, 59, 59, 0.803);
+  background: rgba(59, 59, 59, 0.842);
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   text-align: center;
@@ -66,4 +66,13 @@ button:hover {
   padding: 15px 20px;
   border-radius: 10px;
   display: inline-block;
+}
+footer {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 0.9em;
+  color: #777;
+  font-weight: 300;
+  position: absolute;
+   bottom: 0;
 }
