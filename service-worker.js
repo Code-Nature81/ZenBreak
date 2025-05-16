@@ -1,5 +1,5 @@
-const CACHE_NAME = 'zenbreak-cache-v6';
-const urlsToCache = [
+cache.addAll([
+  '/',
   'index.html',
   'choix-duree.html',
   'choix-son.html',
@@ -20,7 +20,7 @@ const urlsToCache = [
   'sounds/WINDDsgn_Vent (ID 0595)_LS.mp3',
   'sounds/gong.mp3',
   'sounds/notification.mp3'
-];
+]);
 
 self.addEventListener('install', event => {
   event.waitUntil(
