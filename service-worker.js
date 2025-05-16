@@ -5,6 +5,7 @@ const urlsToCache = [
   'choix-son.html',
   'style.css',
   'logo.png',
+  'manifest.json',
   '121805-724719819_tiny.mp4',
   'sounds/RAINConc_Pluie d ete sur terrasse (ID 1019)_LS.mp3',
   'sounds/AMBBird_Oiseaux du soir (ID 1859)_LS.mp3',
