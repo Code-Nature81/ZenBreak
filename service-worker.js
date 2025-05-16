@@ -1,6 +1,10 @@
-const CACHE_NAME = 'zenbreak-cache-v1';
-const urlsToCache = [
-  '/ZenBreak/index.html',
+
+self.addEventListener('install', function (event) {
+  event.waitUntil(
+    caches.open('zenbreak-cache').then(function (cache) {
+      return cache.addAll([
+        '/ZenBreak/',
+        '/ZenBreak/index.html',
   '/ZenBreak/choix-duree.html',
   '/ZenBreak/choix-son.html',
   '/ZenBreak/style.css',
@@ -22,20 +26,11 @@ const urlsToCache = [
   '/ZenBreak/sounds/THUN_Tonnerre 4 (ID 3115)_LS.mp3',
   '/ZenBreak/sounds/WATRWave_Mer vagues (ID 0266)_LS.mp3',
   '/ZenBreak/sounds/WINDDsgn_Vent (ID 0595)_LS.mp3',
-  
+  '/ZenBreak/sounds/gong.mp3',
   '/ZenBreak/sounds/notification.mp3'
-];
-
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
-  );
-});
-
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
+      ]).catch(function (error) {
+        console.error("Erreur lors du caching des ressources :", error);
+      });
+    })
   );
 });
