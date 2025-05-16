@@ -52,6 +52,76 @@ h1{
       margin-top: 1rem;
       color: #6ebaf4;
     }
+    .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(20, 20, 20, 0.95);
+  color: #fff;
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.overlay-content {
+  max-width: 90%;
+  width: 100%;
+  max-height: 90%;
+  background: #222;
+  padding: 30px 20px 20px;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.overlay h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.overlay p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.close-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #34a7d100;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+@media (max-width: 600px) {
+  .overlay-content {
+    font-size: 16px;
+    padding: 20px 15px 15px;
+  }
+
+  .overlay h2 {
+    font-size: 20px;
+  }
+
+  .overlay p {
+    font-size: 16px;
+  }
+}
+
+
     footer {
   text-align: center;
   margin-top: 50px;
@@ -92,10 +162,33 @@ h1{
   <button id="stopBtn">Arrêt son</button>
 
   <div id="timer"></div>
+
+  <div id="infoOverlay" class="overlay">
+  <div class="overlay-content">
+    <button class="close-button" onclick="closeOverlay()">✖</button>
+    <h2>Conseil Zen 🧘‍♀️</h2>
+    <p>
+      Une fois votre son choisi et le compte à rebours lancé,<br>
+      vous pouvez passer votre téléphone en <strong>mode avion</strong>.<br>
+      Cela vous aidera à <strong>vraiment vous déconnecter</strong> et à profiter pleinement de votre moment de détente.
+    </p>
+  </div>
+</div>
+
 <footer>
     <p>&copy; 2025 ZenBreak | Tous droits réservés</p>
   </footer>
   <script>
+     
+  function closeOverlay() {
+    document.getElementById("infoOverlay").style.display = "none";
+  }
+
+  window.addEventListener('load', () => {
+    document.getElementById("infoOverlay").style.display = "flex";
+  });
+
+
     let duration = parseInt(sessionStorage.getItem('dureeChoisie'));
     if (!duration || isNaN(duration)) duration = 300;
 
