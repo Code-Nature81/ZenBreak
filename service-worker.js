@@ -22,7 +22,7 @@ const urlsToCache = [
   '/ZenBreak/sounds/THUN_Tonnerre 4 (ID 3115)_LS.mp3',
   '/ZenBreak/sounds/WATRWave_Mer vagues (ID 0266)_LS.mp3',
   '/ZenBreak/sounds/WINDDsgn_Vent (ID 0595)_LS.mp3',
-  '/ZenBreak/sounds/gong.mp3',
+  
   '/ZenBreak/sounds/notification.mp3'
 ];
 
