@@ -1,6 +1,6 @@
 
 const CACHE_NAME = 'zenbreak-v4';
-const ILES_TO_CACHE = [
+const FILES_TO_CACHE = [
  '/ZenBreak/',
         '/ZenBreak/index.html',
   '/ZenBreak/choix-duree.html',
