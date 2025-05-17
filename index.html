@@ -10,7 +10,7 @@
 
 
   <!-- Couleur de la barre d’état (Android) -->
-  <meta name="theme-color" content="#0288d1" />
+  <meta name="theme-color" content="#0277bd" />
 
   <!-- Icônes pour les différents usages -->
   <link rel="apple-touch-icon" sizes="180x180" href="logo.png" />
@@ -23,16 +23,27 @@
 
 
 <body>
+  <!-- Infobulle d'installation -->
+<div id="installPrompt" class="install-popup">
+  <div class="popup-content">
+    <button id="closePopup" class="close-btn">×</button>
+    <h2>📲 Installer ZenBreak</h2>
+    <p>Pour une meilleure expérience, installe l’application sur ton appareil.</p>
+    <button id="installBtn" class="btn-install">Installer</button>
+  </div>
+</div>
+
   <video id="background-video" autoplay loop muted poster="121805-724719819_tiny.mp4">
   <source src="121805-724719819_tiny.mp4" type="video/mp4">
 </video>
+
   <div class="container">
     <img src="logo.png" alt="Logo ZenBreak" style="width:150px; margin-bottom: 20px;" />
     <h1>Bienvenue sur ZenBreak</h1>
     <p style="color: white;">🧘‍♂️ Une pause relaxante à portée de clic</p>
     <a href="choix-duree.html"><button>Commencer une pause</button></a>
     
-  </div>
+    
   
 <footer>
     <p>&copy; 2025 ZenBreak | Tous droits réservés</p>
@@ -40,12 +51,45 @@
 </body>
 
 <script>
+  let deferredPrompt;
+  const installPrompt = document.getElementById('installPrompt');
+  const installBtn = document.getElementById('installBtn');
+  const closePopup = document.getElementById('closePopup');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installPrompt.style.display = 'flex';
+
+    installBtn.addEventListener('click', () => {
+      installPrompt.style.display = 'none';
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(choice => {
+        if (choice.outcome === 'accepted') {
+          console.log("✅ Appli installée !");
+        } else {
+          console.log("❌ Installation refusée");
+        }
+        deferredPrompt = null;
+      });
+    });
+
+    closePopup.addEventListener('click', () => {
+      installPrompt.style.display = 'none';
+    });
+  });
+
+  // Service worker
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/ZenBreak/service-worker.js')
-      .then(reg => console.log('✅ Service Worker enregistré'))
-      .catch(err => console.error('❌ Erreur Service Worker :', err));
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log("✅ Service Worker actif"))
+        .catch(err => console.log("❌ Service Worker erreur :", err));
+    });
   }
 </script>
+
+
 
 
 </html>
