@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'zenbreak-v4';
+const CACHE_NAME = 'zenbreak-v5';
 const FILES_TO_CACHE = [
  '/ZenBreak/',
         '/ZenBreak/index.html',
@@ -9,7 +9,6 @@ const FILES_TO_CACHE = [
   '/ZenBreak/logo.png',
   '/ZenBreak/manifest.json',
   '/ZenBreak/121805-724719819_tiny.mp4',
-  '/ZenBreak/sounds/RAINConc_Pluie d ete sur terrasse (ID 1019)_LS.mp3',
   '/ZenBreak/sounds/AMBBird_Oiseaux du soir (ID 1859)_LS.mp3',
   '/ZenBreak/sounds/AMBUndr_Grotte 2 (ID 2136)_LS.mp3',
   '/ZenBreak/sounds/ANMLInsc_Cigales (ID 3002)_LS.mp3',
@@ -59,6 +58,16 @@ self.addEventListener('activate', (event) => {
   return self.clients.claim();
 });
 
+// Communication entre le SW et la page
+self.addEventListener('install', (event) => {
+  self.skipWaiting(); // force le passage à la nouvelle version
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(self.clients.claim()); // prend le contrôle immédiat
+});
+
+
 // Interception des requêtes réseau
 self.addEventListener('fetch', (event) => {
   event.respondWith(
@@ -72,4 +81,10 @@ self.addEventListener('fetch', (event) => {
         });
     })
   );
+});
+
+self.addEventListener('message', (event) => {
+  if (event.data === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });

@@ -110,6 +110,54 @@
         .catch(err => console.log("❌ Service Worker erreur :", err));
     });
   }
+
+  if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+    .then(registration => {
+      registration.onupdatefound = () => {
+        const newWorker = registration.installing;
+
+        newWorker.onstatechange = () => {
+          if (newWorker.state === 'installed') {
+            if (navigator.serviceWorker.controller) {
+              // Une nouvelle version est disponible
+              showUpdatePopup();
+            }
+          }
+        };
+      };
+    });
+
+  let refreshing;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (refreshing) return;
+    window.location.reload();
+    refreshing = true;
+  });
+}
+
+function showUpdatePopup() {
+  const popup = document.createElement('div');
+  popup.id = "update-popup";
+  popup.innerHTML = `
+    <div class="popup-overlay">
+      <div class="popup-content">
+        <h2>🆕 Mise à jour disponible</h2>
+        <p>Une nouvelle version de l’application est disponible.</p>
+        <button id="update-app-btn">Mettre à jour</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(popup);
+
+  document.getElementById('update-app-btn').addEventListener('click', () => {
+    navigator.serviceWorker.getRegistration().then(reg => {
+      if (reg.waiting) {
+        reg.waiting.postMessage('SKIP_WAITING');
+      }
+    });
+  });
+}
 </script>
 
 
