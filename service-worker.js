@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'zenbreak-v3';
+const CACHE_NAME = 'zenbreak-v4';
 const urlsToCache = [
  '/ZenBreak/',
         '/ZenBreak/index.html',
@@ -28,41 +28,48 @@ const urlsToCache = [
   '/ZenBreak/sounds/notification.mp3'
 ];
 
-self.addEventListener('install', event => {
+// Installation du service worker
+self.addEventListener('install', (event) => {
+  console.log('[ServiceWorker] Installation');
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        return cache.addAll(urlsToCache);
-      })
-      .catch(error => {
-        console.error("Erreur lors de la mise en cache :", error);
-      })
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log('[ServiceWorker] Mise en cache initiale');
+      return cache.addAll(FILES_TO_CACHE);
+    }).catch((error) => {
+      console.error('[ServiceWorker] Erreur cache.addAll :', error);
+    })
   );
 });
 
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        return response || fetch(event.request);
-      })
-      .catch(error => {
-        console.error("Erreur lors du fetch :", error);
-      })
-  );
-});
-
-self.addEventListener('activate', event => {
-  const cacheWhitelist = [CACHE_NAME];
+// Activation du nouveau service worker
+self.addEventListener('activate', (event) => {
+  console.log('[ServiceWorker] Activation');
   event.waitUntil(
-    caches.keys().then(cacheNames => {
+    caches.keys().then((keyList) => {
       return Promise.all(
-        cacheNames.map(name => {
-          if (!cacheWhitelist.includes(name)) {
-            return caches.delete(name);
+        keyList.map((key) => {
+          if (key !== CACHE_NAME) {
+            console.log('[ServiceWorker] Suppression de l’ancien cache :', key);
+            return caches.delete(key);
           }
         })
       );
+    })
+  );
+  return self.clients.claim();
+});
+
+// Interception des requêtes réseau
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request)
+        .catch(() => {
+          // Optionnel : page de secours en mode hors-ligne
+          if (event.request.mode === 'navigate') {
+            return caches.match('/index.html');
+          }
+        });
     })
   );
 });
