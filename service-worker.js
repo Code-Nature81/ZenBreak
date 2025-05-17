@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'zenbreak-v1';
+const CACHE_NAME = 'zenbreak-v3';
 const urlsToCache = [
  '/ZenBreak/',
         '/ZenBreak/index.html',
