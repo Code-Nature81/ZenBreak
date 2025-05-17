@@ -1,12 +1,12 @@
 
-const CACHE_NAME = 'zenbreak-v5';
+const CACHE_NAME = 'zenbreak-v6';
 const FILES_TO_CACHE = [
  '/ZenBreak/',
         '/ZenBreak/index.html',
   '/ZenBreak/choix-duree.html',
   '/ZenBreak/choix-son.html',
   '/ZenBreak/style.css',
-  '/ZenBreak/logo.png',
+  '/ZenBreak/logo1.svg',
   '/ZenBreak/manifest.json',
   '/ZenBreak/121805-724719819_tiny.mp4',
   '/ZenBreak/sounds/AMBBird_Oiseaux du soir (ID 1859)_LS.mp3',
