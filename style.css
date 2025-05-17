@@ -9,6 +9,18 @@ body {
   align-items: center;
   min-height: 100vh;
 }
+
+.start-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+}
 .install-popup {
   display: none;
   position: fixed;

@@ -32,6 +32,18 @@
     <button id="installBtn" class="btn-install">Installer</button>
   </div>
 </div>
+  <!-- Infobulle iOS -->
+  <div id="iosInstallInfo" class="install-popup" style="display:none;">
+    <div class="popup-content">
+      <button class="close-btn" onclick="this.parentElement.parentElement.style.display='none'">×</button>
+      <h2>📱 Ajouter à l’écran d’accueil</h2>
+      <p>Sur iPhone :</p>
+      <ol>
+        <li>Appuyez sur <strong>Partager</strong> (icône carré + flèche)</li>
+        <li>Puis sur <strong>« Sur l’écran d’accueil »</strong></li>
+      </ol>
+    </div>
+  </div>
 
   <video id="background-video" autoplay loop muted poster="121805-724719819_tiny.mp4">
   <source src="121805-724719819_tiny.mp4" type="video/mp4">
@@ -78,7 +90,18 @@
       installPrompt.style.display = 'none';
     });
   });
+ // Détection iOS
+    function isIos() {
+      return /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+    }
 
+    function isInStandaloneMode() {
+      return ('standalone' in window.navigator) && window.navigator.standalone;
+    }
+
+    if (isIos() && !isInStandaloneMode()) {
+      document.getElementById('iosInstallInfo').style.display = 'flex';
+    }
   // Service worker
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
