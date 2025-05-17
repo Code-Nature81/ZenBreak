@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ZenBreak - Choix du son</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q68DPGEDM4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q68DPGEDM4');
+</script>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -246,6 +254,17 @@ h1{
       clearInterval(timerInterval);
       timerDisplay.textContent = "";
     };
+
+    
+  document.getElementById('startButton').addEventListener('click', function () {
+    gtag('event', 'pause_commencee', {
+      'event_category': 'Relaxation',
+      'event_label': 'L’utilisateur a commencé une pause',
+      'value': 1
+    });
+  });
+
+
   </script>
 
 </body>
